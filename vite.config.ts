@@ -7,4 +7,12 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: '/src' }],
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://homework.jambo.works',
+        changeOrigin: true,
+      },
+    },
+  },
 });
