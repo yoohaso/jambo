@@ -1,4 +1,5 @@
 import BrandLogoImage from '@/assets/images/brand-logo-image.png';
+import { Card } from '@/components/Card';
 
 function BellIcon() {
   return (
@@ -19,7 +20,7 @@ interface HeaderProps {
 
 function Header({ children }: HeaderProps) {
   return (
-    <div className="flex h-[64px] w-screen min-w-[390px] gap-[8px] border-b-[0.5px] bg-common-home-header-background py-[8px] pl-[8px] pr-[14px] sm:h-[68px] sm:w-full sm:min-w-[360px]">
+    <div className="flex h-[64px] w-screen min-w-[390px] gap-common-presentCard-gap border-b-[0.5px] bg-common-home-header-background py-[8px] pl-[8px] pr-[14px] sm:h-[68px] sm:w-full sm:min-w-[360px]">
       {children}
     </div>
   );
@@ -45,6 +46,10 @@ export function Home() {
         <SearchBar />
         <BellIcon />
       </Header>
+      <main className="flex flex-col items-center gap-common-presentCard-gap p-[8px]">
+        <Card />
+        <Card />
+      </main>
     </div>
   );
 }

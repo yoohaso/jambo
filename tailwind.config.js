@@ -18,6 +18,11 @@ export default {
       },
       gap: {
         'unit-sx': '12px',
+        'unit-xxxs': '4px',
+        'common-presentCard-gap': '8px',
+      },
+      padding: {
+        'common-padding-presentCard': '20px',
       },
     },
   },
