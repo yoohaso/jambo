@@ -1,5 +1,5 @@
 import BrandLogoImage from '@/assets/images/brand-logo-image.png';
-import { Card } from '@/components/Card';
+import { CardList } from '@/components/CardList';
 
 function BellIcon() {
   return (
@@ -47,8 +47,7 @@ export function Home() {
         <BellIcon />
       </Header>
       <main className="flex flex-col items-center gap-common-presentCard-gap p-[8px]">
-        <Card />
-        <Card />
+        <CardList />
       </main>
     </div>
   );

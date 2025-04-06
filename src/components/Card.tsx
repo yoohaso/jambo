@@ -26,81 +26,6 @@ function TalkingIcon({ color }: IconProps) {
   );
 }
 
-interface CardProps {
-  cardType?: 'POST' | 'VIDEO';
-  profile?: {
-    nickName: string;
-    imageUrl: string;
-  };
-  category?: {
-    name: string;
-    imageUrl: string;
-  };
-  title?: string;
-  body?: string | null;
-  cardImages?: { imageUrl: string }[];
-  video?: { videoUrl: string }[];
-  viewCount?: number;
-  userCount?: number;
-  createdAt?: number;
-}
-
-export function Card({
-  cardType = 'VIDEO',
-  profile = {
-    nickName: 'Arthur',
-    imageUrl: 'https://jambo-homework.s3.ap-northeast-2.amazonaws.com/thumbnail/t11.png',
-  },
-  category = {
-    name: 'Question & Answer',
-    imageUrl:
-      'https://jambo-homework.s3.ap-northeast-2.amazonaws.com/categroy/Question%26Answer.png',
-  },
-  title = 'Entrepreneurs & Hustlers Connect!',
-  body = "If you're passionate about business, side hustles, or personal growth, let’s exchange knowledge and push each other toward success!",
-  cardImages = [
-    {
-      imageUrl: 'https://jambo-homework.s3.ap-northeast-2.amazonaws.com/image/img2.png',
-    },
-    {
-      imageUrl: 'https://jambo-homework.s3.ap-northeast-2.amazonaws.com/image/img3.png',
-    },
-  ],
-  video = [
-    {
-      videoUrl:
-        'https://d35bg2zvgi5ldt.cloudfront.net/video/card/67eb1e0114617176a78da1e1/edited_video.mp4',
-    },
-  ],
-  viewCount = 720,
-  userCount = 14,
-  createdAt = 1677369600000,
-}: CardProps) {
-  return cardType === 'POST' ? (
-    <PostCard
-      profile={profile}
-      createdAt={createdAt}
-      category={category}
-      title={title}
-      body={body}
-      cardImages={cardImages}
-      viewCount={viewCount}
-      userCount={userCount}
-    />
-  ) : (
-    <VideoCard
-      profile={profile}
-      createdAt={createdAt}
-      category={category}
-      title={title}
-      body={body}
-      video={video}
-      viewCount={viewCount}
-      userCount={userCount}
-    />
-  );
-}
-
 interface PostCardProps {
   profile: {
     nickName: string;
@@ -155,7 +80,7 @@ interface VideoCardProps {
   };
   title: string;
   body: string | null;
-  video: { videoUrl: string }[];
+  videoUrl: string;
   viewCount: number;
   userCount: number;
   createdAt: number;
@@ -169,7 +94,7 @@ export function VideoCard({
   body,
   viewCount,
   userCount,
-  video,
+  videoUrl,
 }: VideoCardProps) {
   return (
     <div className="relative h-fit overflow-hidden rounded-[32px] sm:w-[560px]">
@@ -181,7 +106,7 @@ export function VideoCard({
         playsInline
         className="h-[664.89px] w-full object-cover sm:h-[995.72px]"
       >
-        <source src={video[0].videoUrl} type="video/mp4" />
+        <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="absolute inset-0 flex h-[664.89px] flex-col justify-between overflow-hidden sm:h-[995.72px]">
