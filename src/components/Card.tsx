@@ -56,7 +56,10 @@ export function Card({
   body = "If you're passionate about business, side hustles, or personal growth, let’s exchange knowledge and push each other toward success!",
   cardImages = [
     {
-      imageUrl: 'https://jambo-homework.s3.ap-northeast-2.amazonaws.com/image/img5.png',
+      imageUrl: 'https://jambo-homework.s3.ap-northeast-2.amazonaws.com/image/img2.png',
+    },
+    {
+      imageUrl: 'https://jambo-homework.s3.ap-northeast-2.amazonaws.com/image/img3.png',
     },
   ],
   viewCount = 720,
@@ -164,12 +167,12 @@ function Contents({ category, title, body, images, viewCount, userCount }: Conte
       <div>
         <p className="typography-medium text-text-default">{body}</p>
       </div>
-      <div>
+      <div className="scrollbar-hide flex snap-x snap-mandatory snap-center scroll-ml-6 gap-[2px] overflow-x-auto scroll-smooth">
         {images.map((image, index) => (
           <img
             key={index}
             src={image.imageUrl}
-            className="h-[417.5px] w-full rounded-[8px] sm:h-[650px]"
+            className={`h-[417.5px] ${images.length > 1 ? 'w-[300px] sm:w-[448px]' : 'w-full'} snap-center rounded-[8px] sm:h-[650px]`}
             alt={`Card Image ${index + 1}`}
           />
         ))}
