@@ -104,14 +104,16 @@ function PostCard({
   body,
   viewCount,
   userCount,
+  cardImages,
 }: PostCardProps) {
   return (
-    <div className="h-fit rounded-[32px] bg-common-container-presentCard sm:w-[560px]">
+    <div className="h-fit w-full rounded-[32px] bg-common-container-presentCard sm:w-[560px]">
       <UserInfo {...profile} createdAt={createdAt} />
       <Contents
         category={category}
         title={title}
         body={body}
+        images={cardImages}
         viewCount={viewCount}
         userCount={userCount}
       />
@@ -127,9 +129,9 @@ interface UserInfoProps {
 
 function UserInfo({ nickName, imageUrl, createdAt }: UserInfoProps) {
   return (
-    <div className="flex items-center gap-common-presentCard-gap px-common-padding-presentCard pb-[12px] pt-common-padding-presentCard">
+    <div className="gap-common-presentCard-gap px-common-padding-presentCard pt-common-padding-presentCard flex items-center pb-[12px]">
       <img src={imageUrl} className="size-[34px] rounded-common-border-radius-full" />
-      <div className="flex flex-col gap-unit-xxxs">
+      <div className="gap-unit-xxxs flex flex-col">
         <span className="typography-exception-username-small text-text-default">{nickName}</span>
         <span className="typography-exception-meta text-text-default">{createdAt}</span>
       </div>
@@ -144,15 +146,16 @@ interface ContentsProps {
   };
   title: string;
   body: string | null;
+  images: { imageUrl: string }[];
   viewCount: number;
   userCount: number;
 }
 
-function Contents({ category, title, body, viewCount, userCount }: ContentsProps) {
+function Contents({ category, title, body, images, viewCount, userCount }: ContentsProps) {
   return (
-    <div className="flex flex-col gap-common-presentCard-gap px-common-padding-presentCard pb-common-padding-presentCard">
+    <div className="gap-common-presentCard-gap px-common-padding-presentCard pb-common-padding-presentCard flex flex-col">
       <div className="flex flex-col gap-[2px]">
-        <div className="flex gap-unit-xxxs">
+        <div className="gap-unit-xxxs flex">
           <img src={category.imageUrl} className="size-[14px]" />
           <span className="typography-label-small-bold text-text-default">{category.name}</span>
         </div>
@@ -161,12 +164,22 @@ function Contents({ category, title, body, viewCount, userCount }: ContentsProps
       <div>
         <p className="typography-medium text-text-default">{body}</p>
       </div>
+      <div>
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image.imageUrl}
+            className="h-[417.5px] w-full rounded-[8px] sm:h-[650px]"
+            alt={`Card Image ${index + 1}`}
+          />
+        ))}
+      </div>
       <div className="flex gap-unit-sx">
-        <div className="flex items-center gap-unit-xxxs">
+        <div className="gap-unit-xxxs flex items-center">
           <VisitorIcon />
           <span className="typography-body-small text-text-default">{viewCount}</span>
         </div>
-        <div className="flex items-center gap-unit-xxxs">
+        <div className="gap-unit-xxxs flex items-center">
           <TalkingIcon />
           <span className="typography-body-small text-text-default">{userCount}</span>
         </div>
