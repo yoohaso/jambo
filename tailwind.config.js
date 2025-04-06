@@ -12,6 +12,7 @@ export default {
         'form-button-primary': '#C9B8FF',
         'text-default': '#000000',
         'base-grayscale-grayscale-0': '#000000',
+        'color-base-white-white': '#FFFFFF',
       },
       borderRadius: {
         'common-border-radius-full': '1000px',
