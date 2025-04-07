@@ -38,31 +38,31 @@ interface PostCardProps {
   title: string;
   body: string | null;
   cardImages: { imageUrl: string }[];
-  viewCount: number;
-  userCount: number;
-  createdAt: number;
+  viewCountText: string;
+  userCountText: string;
+  time: string;
 }
 
 export function PostCard({
   profile,
-  createdAt,
+  time,
   category,
   title,
   body,
-  viewCount,
-  userCount,
+  viewCountText,
+  userCountText,
   cardImages,
 }: PostCardProps) {
   return (
     <div className="h-fit w-full rounded-[32px] bg-common-container-presentCard sm:w-[560px]">
-      <UserInfo {...profile} createdAt={createdAt} colorTheme="black" />
+      <UserInfo {...profile} time={time} colorTheme="black" />
       <Contents
         category={category}
         title={title}
         body={body}
         images={cardImages}
-        viewCount={viewCount}
-        userCount={userCount}
+        viewCountText={viewCountText}
+        userCountText={userCountText}
         colorTheme="black"
       />
     </div>
@@ -81,19 +81,19 @@ interface VideoCardProps {
   title: string;
   body: string | null;
   videoUrl: string;
-  viewCount: number;
-  userCount: number;
-  createdAt: number;
+  viewCountText: string;
+  userCountText: string;
+  time: string;
 }
 
 export function VideoCard({
   profile,
-  createdAt,
+  time,
   category,
   title,
   body,
-  viewCount,
-  userCount,
+  viewCountText,
+  userCountText,
   videoUrl,
 }: VideoCardProps) {
   return (
@@ -110,13 +110,13 @@ export function VideoCard({
         Your browser does not support the video tag.
       </video>
       <div className="absolute inset-0 flex h-[664.89px] flex-col justify-between overflow-hidden sm:h-[995.72px]">
-        <UserInfo {...profile} createdAt={createdAt} colorTheme="white" />
+        <UserInfo {...profile} time={time} colorTheme="white" />
         <Contents
           category={category}
           title={title}
           body={body}
-          viewCount={viewCount}
-          userCount={userCount}
+          viewCountText={viewCountText}
+          userCountText={userCountText}
           colorTheme="white"
         />
       </div>
@@ -127,11 +127,11 @@ export function VideoCard({
 interface UserInfoProps {
   nickName: string;
   imageUrl: string;
-  createdAt: number;
+  time: string;
   colorTheme: 'black' | 'white';
 }
 
-function UserInfo({ nickName, imageUrl, createdAt, colorTheme }: UserInfoProps) {
+function UserInfo({ nickName, imageUrl, time, colorTheme }: UserInfoProps) {
   const textColor = colorTheme === 'black' ? 'text-text-default' : 'text-color-white-white';
 
   return (
@@ -139,7 +139,7 @@ function UserInfo({ nickName, imageUrl, createdAt, colorTheme }: UserInfoProps) 
       <img src={imageUrl} className="size-[34px] rounded-common-border-radius-full" />
       <div className="gap-unit-xxxs flex flex-col">
         <span className={`typography-exception-username-small ${textColor}`}>{nickName}</span>
-        <span className={`typography-exception-meta ${textColor}`}>{createdAt}</span>
+        <span className={`typography-exception-meta ${textColor}`}>{time}</span>
       </div>
     </div>
   );
@@ -153,8 +153,8 @@ interface ContentsProps {
   title: string;
   body: string | null;
   images?: { imageUrl: string }[];
-  viewCount: number;
-  userCount: number;
+  viewCountText: string;
+  userCountText: string;
   colorTheme: 'black' | 'white';
 }
 
@@ -163,8 +163,8 @@ function Contents({
   title,
   body,
   images,
-  viewCount,
-  userCount,
+  viewCountText,
+  userCountText,
   colorTheme,
 }: ContentsProps) {
   const textColor = colorTheme === 'black' ? 'text-text-default' : 'text-color-white-white';
@@ -196,11 +196,11 @@ function Contents({
       <div className="flex gap-unit-sx">
         <div className="gap-unit-xxxs flex items-center">
           <VisitorIcon color={colorTheme} />
-          <span className={`typography-body-small ${textColor}`}>{viewCount}</span>
+          <span className={`typography-body-small ${textColor}`}>{viewCountText}</span>
         </div>
         <div className="gap-unit-xxxs flex items-center">
           <TalkingIcon color={colorTheme} />
-          <span className={`typography-body-small ${textColor}`}>{userCount}</span>
+          <span className={`typography-body-small ${textColor}`}>{userCountText}</span>
         </div>
       </div>
     </div>
