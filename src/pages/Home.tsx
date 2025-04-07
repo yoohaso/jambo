@@ -21,7 +21,7 @@ interface HeaderProps {
 
 function Header({ children }: HeaderProps) {
   return (
-    <div className="flex h-[64px] w-screen min-w-[390px] gap-common-presentCard-gap border-b-[0.5px] bg-common-home-header-background py-[8px] pl-[8px] pr-[14px] sm:h-[68px] sm:w-full sm:min-w-[360px]">
+    <div className="fixed z-10 flex h-header-mobile w-screen min-w-[390px] gap-common-presentCard-gap border-b-[0.5px] bg-common-home-header-background py-[8px] pl-[8px] pr-[14px] sm:h-header-desktop sm:w-full sm:min-w-[360px]">
       {children}
     </div>
   );
@@ -42,7 +42,7 @@ function SearchBar() {
 
 function Tabbar() {
   return (
-    <div className="flex h-[64px] w-full items-center justify-evenly bg-common-tabbar">
+    <div className="flex h-tabbar-mobile w-full items-center justify-evenly bg-common-tabbar">
       <TabbarButton iconComponent={<HomeIcon />} label="HOME" />
       <TabbarButton iconComponent={<UnionIcon />} label="NEARBY" />
       <WriteButton size={44} />
@@ -83,7 +83,8 @@ function SideMenuButton({ iconComponent, label }: SideMenuButtonProps) {
 
 function SideMenu() {
   return (
-    <div className="hidden h-auto w-[200px] bg-common-tabbar p-[16px] sm:block">
+    <div className="fixed hidden h-screen w-side-menu-desktop bg-common-tabbar p-[16px] sm:block">
+      <div className="h-header-desktop" />
       <SideMenuButton iconComponent={<HomeIcon />} label="HOME" />
       <SideMenuButton iconComponent={<UnionIcon />} label="NEARBY" />
       <SideMenuButton iconComponent={<SayIcon />} label="CONNECT" />
@@ -103,10 +104,16 @@ export function Home() {
       <div className="flex">
         <SideMenu />
         <main className="flex-1">
-          <CardList />
+          <div className="h-header-mobile w-full sm:block sm:h-header-desktop" />
+          <div className="flex">
+            <div className="hidden h-screen w-side-menu-desktop sm:block" />
+            <div className="flex-1">
+              <CardList />
+            </div>
+          </div>
         </main>
       </div>
-      <div className="h-[64px] sm:hidden"></div>
+      <div className="h-tabbar-mobile sm:hidden" />
       <div className="fixed inset-x-0 bottom-0 z-10 sm:hidden">
         <Tabbar />
       </div>

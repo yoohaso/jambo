@@ -29,6 +29,14 @@ export default {
       borderColor: {
         'base-grayscale-grayscale-0': '#000000',
       },
+      height: {
+        'header-mobile': '64px',
+        'header-desktop': '68px',
+        'tabbar-mobile': '64px',
+      },
+      width: {
+        'side-menu-desktop': '200px',
+      },
     },
   },
   plugins: [],
