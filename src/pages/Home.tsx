@@ -27,6 +27,7 @@ function HomeLayout({ children }: HomeLayaoutProps) {
             <div className="hidden h-screen w-side-menu-desktop sm:block" />
             <div className="flex-1">{children}</div>
           </div>
+          <div className="hidden h-[200px] w-full sm:block" />
         </main>
       </div>
       <div className="h-tabbar-mobile sm:hidden" />
