@@ -24,6 +24,9 @@
   .typography-mobile-tabbar {
     @apply text-[9px] font-normal leading-[11px] tracking-[-0.25px];
   }
+  .typography-desktop-side-menu {
+    @apply text-[14px] font-normal leading-[14px] tracking-[-0.5px];
+  }
 
   .scrollbar-hide {
     /* IE and Edge */

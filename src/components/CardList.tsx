@@ -107,7 +107,7 @@ export function CardList() {
   const ref = useIntersect(handleIntersect);
 
   return (
-    <div className="flex flex-col items-center gap-common-presentCard-gap px-[8px] pt-[8px]">
+    <div className="flex flex-col items-center gap-common-presentCard-gap px-[8px] pt-[8px] sm:px-0">
       {cards.map(({ cardType, card, profile }) => {
         return cardType === 'POST' ? (
           <PostCard
@@ -141,7 +141,7 @@ export function CardList() {
           />
         );
       })}
-      <div ref={ref}></div>
+      <div ref={ref} className="h-[2px]"></div>
       {isLoading && <div className="text-[20px] text-black">로딩중</div>}
       {error && <div className="text-[20px] text-black">{error.message}</div>}
     </div>

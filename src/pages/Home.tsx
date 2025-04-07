@@ -45,17 +45,50 @@ function Tabbar() {
     <div className="flex h-[64px] w-full items-center justify-evenly bg-common-tabbar">
       <TabbarButton iconComponent={<HomeIcon />} label="HOME" />
       <TabbarButton iconComponent={<UnionIcon />} label="NEARBY" />
-      <WriteButton />
+      <WriteButton size={44} />
       <TabbarButton iconComponent={<SayIcon />} label="CONNECT" />
       <TabbarButton iconComponent={<MyIcon />} label="ME" />
     </div>
   );
 }
 
-function WriteButton() {
+interface WriteButtonProps {
+  size: number;
+}
+
+function WriteButton({ size }: WriteButtonProps) {
   return (
-    <div className="flex size-[44px] items-center justify-center rounded-[100px] border-2 border-base-grayscale-grayscale-0 bg-form-button-primary">
+    <div
+      style={{ width: `${size}px`, height: `${size}px` }}
+      className={`flex items-center justify-center rounded-[100px] border-2 border-base-grayscale-grayscale-0 bg-form-button-primary`}
+    >
       <PlusIcon />
+    </div>
+  );
+}
+
+interface SideMenuButtonProps {
+  iconComponent: React.ReactNode;
+  label: string;
+}
+
+function SideMenuButton({ iconComponent, label }: SideMenuButtonProps) {
+  return (
+    <div className="flex h-[48px] items-center gap-common-presentCard-gap py-[6px]">
+      {iconComponent}
+      <div className="typography-desktop-side-menu h-[11px] text-text-default">{label}</div>
+    </div>
+  );
+}
+
+function SideMenu() {
+  return (
+    <div className="hidden h-auto w-[200px] bg-common-tabbar p-[16px] sm:block">
+      <SideMenuButton iconComponent={<HomeIcon />} label="HOME" />
+      <SideMenuButton iconComponent={<UnionIcon />} label="NEARBY" />
+      <SideMenuButton iconComponent={<SayIcon />} label="CONNECT" />
+      <SideMenuButton iconComponent={<MyIcon />} label="ME" />
+      <SideMenuButton iconComponent={<WriteButton size={24} />} label="ADD A CARD" />
     </div>
   );
 }
@@ -67,10 +100,13 @@ export function Home() {
         <SearchBar />
         <BellIcon />
       </Header>
-      <main>
-        <CardList />
-      </main>
-      <div className="sm: hidden h-[64px]"></div>
+      <div className="flex">
+        <SideMenu />
+        <main className="flex-1">
+          <CardList />
+        </main>
+      </div>
+      <div className="h-[64px] sm:hidden"></div>
       <div className="fixed inset-x-0 bottom-0 z-10 sm:hidden">
         <Tabbar />
       </div>
