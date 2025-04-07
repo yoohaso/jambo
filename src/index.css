@@ -21,6 +21,10 @@
   .typography-body-small {
     @apply text-[13px] font-normal leading-[16px] tracking-[-0.25px];
   }
+  .typography-mobile-tabbar {
+    @apply text-[9px] font-normal leading-[11px] tracking-[-0.25px];
+  }
+
   .scrollbar-hide {
     /* IE and Edge */
     -ms-overflow-style: 'none';
