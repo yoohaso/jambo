@@ -97,7 +97,7 @@ export function VideoCard({
   videoUrl,
 }: VideoCardProps) {
   return (
-    <div className="relative h-fit overflow-hidden rounded-[32px] sm:w-[560px]">
+    <div className="relative h-fit w-full overflow-hidden rounded-[32px] sm:w-[560px]">
       <video
         controls
         autoPlay
@@ -135,13 +135,13 @@ function UserInfo({ nickName, imageUrl, time, colorTheme }: UserInfoProps) {
   const textColor = colorTheme === 'black' ? 'text-text-default' : 'text-color-white-white';
 
   return (
-    <div className="gap-common-presentCard-gap px-common-padding-presentCard pt-common-padding-presentCard flex items-center pb-[12px]">
+    <div className="flex items-center gap-common-presentCard-gap px-common-padding-presentCard pb-[12px] pt-common-padding-presentCard">
       <img
         src={imageUrl}
         className="size-[34px] rounded-common-border-radius-full"
         alt="User Profile"
       />
-      <div className="gap-unit-xxxs flex flex-col">
+      <div className="flex flex-col gap-unit-xxxs">
         <span className={`typography-exception-username-small ${textColor}`}>{nickName}</span>
         <span className={`typography-exception-meta ${textColor}`}>{time}</span>
       </div>
@@ -174,9 +174,9 @@ function Contents({
   const textColor = colorTheme === 'black' ? 'text-text-default' : 'text-color-white-white';
 
   return (
-    <div className="gap-common-presentCard-gap px-common-padding-presentCard pb-common-padding-presentCard flex flex-col">
+    <div className="flex flex-col gap-common-presentCard-gap px-common-padding-presentCard pb-common-padding-presentCard">
       <div className="flex flex-col gap-[2px]">
-        <div className="gap-unit-xxxs flex">
+        <div className="flex gap-unit-xxxs">
           <img src={category.imageUrl} className="size-[14px]" />
           <span className={`typography-label-small-bold ${textColor}`}>{category.name}</span>
         </div>
@@ -198,11 +198,11 @@ function Contents({
         </div>
       )}
       <div className="flex gap-unit-sx">
-        <div className="gap-unit-xxxs flex items-center">
+        <div className="flex items-center gap-unit-xxxs">
           <VisitorIcon color={colorTheme} />
           <span className={`typography-body-small ${textColor}`}>{viewCountText}</span>
         </div>
-        <div className="gap-unit-xxxs flex items-center">
+        <div className="flex items-center gap-unit-xxxs">
           <TalkingIcon color={colorTheme} />
           <span className={`typography-body-small ${textColor}`}>{userCountText}</span>
         </div>
