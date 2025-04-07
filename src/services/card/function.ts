@@ -6,7 +6,7 @@ export const fetchCards = async () => {
   return response;
 };
 
-export const fetcCardsWithPage = async (page: string) => {
+export const fetchCardsWithPage = async (page: string) => {
   const response = await ky.get<CardResponse>(`/api/v1/card?page=${page}`).json();
   return response;
 };

@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { PostCard, VideoCard } from './Card';
-import { fetcCardsWithPage, fetchCards } from '@/services/card/function';
-import { CardItem } from '@/services/card/type';
+import { useCards } from '@/services/card/hook';
 
 type IntersectHandler = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => void;
 
@@ -87,30 +86,25 @@ const computeDateNotation = (timestamp: number) => {
 };
 
 export function CardList() {
-  const [cards, setCards] = useState<CardItem[]>([]);
-  const [hasNext, setHasNext] = useState(false);
+  const {
+    data: { cards, hasNext },
+    isLoading,
+    error,
+    fetchNextPage,
+  } = useCards();
 
-  const lastCardId = cards.length > 0 && cards[cards.length - 1].card.cardId;
+  const handleIntersect = useCallback(
+    async (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
+      observer.unobserve(entry.target);
 
-  useEffect(() => {
-    const getCards = async () => {
-      const { list, hasNext } = await fetchCards();
-      setCards(list);
-      setHasNext(hasNext);
-    };
+      if (hasNext) {
+        fetchNextPage();
+      }
+    },
+    [hasNext, fetchNextPage]
+  );
 
-    getCards();
-  }, []);
-
-  const ref = useIntersect(async (entry, observer) => {
-    observer.unobserve(entry.target);
-
-    if (hasNext && lastCardId) {
-      const { list, hasNext } = await fetcCardsWithPage(lastCardId);
-      setCards(prev => [...prev, ...list]);
-      setHasNext(hasNext);
-    }
-  });
+  const ref = useIntersect(handleIntersect);
 
   return (
     <div className="flex flex-col items-center gap-common-presentCard-gap p-[8px]">
@@ -148,6 +142,8 @@ export function CardList() {
         );
       })}
       <div ref={ref}></div>
+      {isLoading && <div className="text-[20px] text-black">로딩중</div>}
+      {error && <div className="text-[20px] text-black">{error.message}</div>}
     </div>
   );
 }
