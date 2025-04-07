@@ -4,6 +4,7 @@ import { useCards } from '@/services/card/hook';
 import { useIntersect } from '@/hooks/useIntersect';
 import { computeDateNotation } from '@/utils/computeDateNotation';
 import { computeCountNotaion } from '@/utils/computeCountNotation';
+import { Spinner } from './Spinner';
 
 export function CardList() {
   const {
@@ -62,7 +63,7 @@ export function CardList() {
         );
       })}
       <div ref={ref} className="h-[2px]"></div>
-      {isLoading && <div className="text-[20px] text-black">로딩중</div>}
+      {isLoading && <Spinner />}
       {error && <div className="text-[20px] text-black">{error.message}</div>}
     </div>
   );
