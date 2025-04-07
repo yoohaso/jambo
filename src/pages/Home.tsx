@@ -5,6 +5,18 @@ import { Tabbar } from '@/components/Tabbar';
 
 export function Home() {
   return (
+    <HomeLayout>
+      <CardList />
+    </HomeLayout>
+  );
+}
+
+interface HomeLayaoutProps {
+  children: React.ReactNode;
+}
+
+function HomeLayout({ children }: HomeLayaoutProps) {
+  return (
     <div className="relative h-screen w-screen">
       <Header />
       <div className="flex">
@@ -13,9 +25,7 @@ export function Home() {
           <div className="h-header-mobile w-full sm:block sm:h-header-desktop" />
           <div className="flex">
             <div className="hidden h-screen w-side-menu-desktop sm:block" />
-            <div className="flex-1">
-              <CardList />
-            </div>
+            <div className="flex-1">{children}</div>
           </div>
         </main>
       </div>
