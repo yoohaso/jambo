@@ -17,7 +17,7 @@ interface HomeLayaoutProps {
 
 function HomeLayout({ children }: HomeLayaoutProps) {
   return (
-    <div className="relative h-screen w-screen">
+    <div className="relative h-screen w-screen min-w-[390px]">
       <Header />
       <div className="flex">
         <SideMenu />
@@ -31,7 +31,7 @@ function HomeLayout({ children }: HomeLayaoutProps) {
         </main>
       </div>
       <div className="h-tabbar-mobile sm:hidden" />
-      <div className="fixed inset-x-0 bottom-0 z-10 sm:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-10 min-w-[390px] sm:hidden">
         <Tabbar />
       </div>
     </div>
