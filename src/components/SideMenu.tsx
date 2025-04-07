@@ -1,15 +1,16 @@
 import { HomeIcon, SayIcon, MyIcon, UnionIcon } from '@/components/icons';
 import { WriteButton } from './WriteButton';
+import { MENU_NAME } from '@/constants';
 
 export function SideMenu() {
   return (
     <div className="fixed hidden h-screen w-side-menu-desktop bg-common-tabbar p-[16px] sm:block">
       <div className="h-header-desktop" />
-      <SideMenuButton iconComponent={<HomeIcon />} label="HOME" />
-      <SideMenuButton iconComponent={<UnionIcon />} label="NEARBY" />
-      <SideMenuButton iconComponent={<SayIcon />} label="CONNECT" />
-      <SideMenuButton iconComponent={<MyIcon />} label="ME" />
-      <SideMenuButton iconComponent={<WriteButton size={24} />} label="ADD A CARD" />
+      <SideMenuButton iconComponent={<HomeIcon />} label={MENU_NAME.HOME} />
+      <SideMenuButton iconComponent={<UnionIcon />} label={MENU_NAME.NEARBY} />
+      <SideMenuButton iconComponent={<SayIcon />} label={MENU_NAME.CONNECT} />
+      <SideMenuButton iconComponent={<MyIcon />} label={MENU_NAME.ME} />
+      <SideMenuButton iconComponent={<WriteButton size={24} />} label={MENU_NAME.ADD_A_CARD} />
     </div>
   );
 }
