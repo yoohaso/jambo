@@ -46,7 +46,7 @@ export function Home() {
         <SearchBar />
         <BellIcon />
       </Header>
-      <main className="flex flex-col items-center gap-common-presentCard-gap p-[8px]">
+      <main>
         <CardList />
       </main>
     </div>

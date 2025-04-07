@@ -107,7 +107,7 @@ export function CardList() {
   const ref = useIntersect(handleIntersect);
 
   return (
-    <div className="flex flex-col items-center gap-common-presentCard-gap p-[8px]">
+    <div className="flex flex-col items-center gap-common-presentCard-gap px-[8px] pt-[8px]">
       {cards.map(({ cardType, card, profile }) => {
         return cardType === 'POST' ? (
           <PostCard
