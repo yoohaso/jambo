@@ -136,7 +136,11 @@ function UserInfo({ nickName, imageUrl, time, colorTheme }: UserInfoProps) {
 
   return (
     <div className="gap-common-presentCard-gap px-common-padding-presentCard pt-common-padding-presentCard flex items-center pb-[12px]">
-      <img src={imageUrl} className="size-[34px] rounded-common-border-radius-full" />
+      <img
+        src={imageUrl}
+        className="size-[34px] rounded-common-border-radius-full"
+        alt="User Profile"
+      />
       <div className="gap-unit-xxxs flex flex-col">
         <span className={`typography-exception-username-small ${textColor}`}>{nickName}</span>
         <span className={`typography-exception-meta ${textColor}`}>{time}</span>
